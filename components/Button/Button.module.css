@@ -1,0 +1,60 @@
+.container {
+  @apply bg-black block text-white relative w-3/5 h-12 mx-auto pointer-events-auto cursor-pointer;
+
+  box-shadow: 15px 13px 10px 1px #7f0aff85;
+
+  transition: 800ms;
+}
+
+.container[data-type="apple"] {
+  margin-bottom: 6rem !important;
+}
+
+.display {
+  transition: 150ms;
+
+  line-height: 48px;
+
+  cursor: pointer;
+  pointer-events: none;
+}
+
+.spotify {
+  text-shadow: 1px -7px 0px #000000;
+  top: -30px;
+}
+
+.container:hover .spotify {
+  text-shadow: 1px -30px 0px #000000;
+}
+
+.apple {
+  text-shadow: 4px 3px 0px #000000;
+  bottom: -20px;
+}
+
+.container:hover .apple {
+  text-shadow: 1px 30px 0px #000000;
+}
+
+.youtube {
+  text-shadow: 0px -3px 0px #000000;
+  top: -30px;
+}
+
+.container:hover .youtube {
+  text-shadow: 1px -30px 0px #000000;
+}
+
+.soundcloud {
+  text-shadow: 4px 17px 0px #000000;
+  top: 6px;
+}
+
+.container:hover .soundcloud {
+  text-shadow: 1px -30px 0px #000000;
+}
+
+.container:hover .display {
+  top: 0;
+}
