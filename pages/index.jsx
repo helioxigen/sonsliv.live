@@ -14,7 +14,7 @@ export default function Home() {
     <main className={styles.container} data-hover={hover}>
       <header className={styles.hero}>
         <Image
-          loader={({ src }) => `/sonsliv.live/${src}`}
+          loader={({ src }) => `https://sonsliv.live/${src}`}
           src="/background.webp"
           width="600"
           height="200"
