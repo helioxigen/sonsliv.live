@@ -12,6 +12,13 @@ export default function Home() {
 
   return (
     <main className={styles.container} data-hover={hover}>
+      <Head>
+        <title>SON SLIV LIVES HERE</title>
+        <meta
+          name="description"
+          content="THERE IS SOMETHING YOU NEED TO HEAR"
+        ></meta>
+      </Head>
       <header className={styles.hero}>
         <Image
           loader={({ src }) => `https://sonsliv.live/${src}`}

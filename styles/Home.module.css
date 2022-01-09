@@ -1,6 +1,7 @@
 .container {
   @apply mx-auto pointer-events-none;
-  width: 600px;
+  max-width: 600px;
+  width: 100%;
 
   transition: 800ms;
 
