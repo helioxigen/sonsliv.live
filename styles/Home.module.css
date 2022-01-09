@@ -2,6 +2,7 @@
   @apply mx-auto pointer-events-none;
   max-width: 600px;
   width: 100%;
+  overflow: hidden;
 
   transition: 800ms;
 
@@ -11,6 +12,11 @@
   padding-top: 10vh;
   box-sizing: border-box;
   margin-top: 0;
+}
+
+.logo {
+  max-width: 60vw;
+  height: 100%;
 }
 
 .container:hover {

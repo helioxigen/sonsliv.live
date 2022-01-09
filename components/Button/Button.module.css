@@ -1,5 +1,5 @@
 .container {
-  @apply bg-black block text-white relative w-3/5 h-12 mx-auto pointer-events-auto cursor-pointer;
+  @apply bg-black block text-white relative h-8 w-52 md:w-3/5 md:h-12 mx-auto pointer-events-auto cursor-pointer;
 
   box-shadow: 15px 13px 10px 1px #7f0aff85;
 
@@ -20,7 +20,7 @@
 }
 
 .spotify {
-  text-shadow: 1px -7px 0px #000000;
+  text-shadow: 1px -0.1rem 0px #000000;
   top: -30px;
 }
 

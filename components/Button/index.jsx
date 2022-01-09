@@ -10,7 +10,7 @@ export const Button = ({ children, className, type }) => {
       href={appConfig.links[type]}
     >
       <div
-        className={`${className} ${styles.display} ${styles[type]} absolute text-6xl text-center w-full hover:top-0`}
+        className={`${className} ${styles.display} ${styles[type]} absolute text-4xl md:text-6xl text-center w-full hover:top-0`}
       >
         {type}
       </div>
