@@ -13,7 +13,12 @@ export default function Home() {
   return (
     <main className={styles.container} data-hover={hover}>
       <header className={styles.hero}>
-        <Image src="/background.jpg" width="600" height="200" />
+        <Image
+          loader={({ src }) => `/sonsliv.live/${src}`}
+          src="/background.webp"
+          width="600"
+          height="200"
+        />
         <div className="absolute inset-0 flex justify-center items-center">
           <svg
             width="321"
