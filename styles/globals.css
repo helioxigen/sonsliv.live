@@ -23,4 +23,5 @@ a {
 
 .hover-blur:hover > *:not(:hover) {
   filter: blur(6px);
+  transform: scaleX(1);
 }
