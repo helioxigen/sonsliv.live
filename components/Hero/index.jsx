@@ -10,6 +10,7 @@ export const Hero = ({}) => {
       trackOnWindow
       tiltReverse
       tiltAxis="x"
+      tiltMaxAngleX={15}
       perspective={300}
       className={styles.hero}
     >
