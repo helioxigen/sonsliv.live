@@ -1,0 +1,34 @@
+.logo {
+  max-width: 60vw;
+  height: 100%;
+
+  position: absolute;
+  top: 0;
+}
+
+.logoContainer {
+  transform: translateZ(60px);
+}
+
+.hero {
+  position: relative;
+  max-width: 600px;
+
+  transform-style: preserve-3d;
+
+  @apply mb-6;
+}
+
+.hero img {
+  animation: move 600ms forwards infinite steps(13);
+}
+
+@keyframes move {
+  from {
+    transform: translateX(0) scale(1.4);
+  }
+
+  to {
+    transform: translateX(13%) scale(1.4);
+  }
+}
