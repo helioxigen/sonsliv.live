@@ -1,17 +1,41 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Tilt from "react-parallax-tilt";
 import Image from "next/image";
 import styles from "./Hero.module.css";
+import { motion, useMotionValue, useTransform } from "framer-motion";
+import { useGyro } from "../../utils/useGyro";
 
 export const Hero = ({}) => {
+  const { delta } = useGyro();
+
+  const mousePos = useMotionValue(0);
+  const rotateX = useTransform(mousePos, [0, 500], [0, -30]);
+
+  // const
+
+  useEffect(() => {
+    const evt = window.addEventListener("mousemove", (event) => {
+      mousePos.set(event.pageY);
+    });
+
+    return () => window.removeEventListener("mousemove", evt);
+  }, []);
+
+  // perspective(300px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)
+
+  console.log(delta.beta);
+
   return (
-    <Tilt
-      gyroscope
-      trackOnWindow
-      tiltReverse
-      tiltAxis="x"
-      tiltMaxAngleX={15}
-      perspective={300}
+    <motion.div
+      // gyroscope
+      // trackOnWindow
+      // tiltReverse
+      // tiltAxis="x"
+      // tiltMaxAngleX={15}
+      // tiltAngleXInitial={30}
+      // perspective={300}
+      // style={{  }}
+      style={{ rotateX: delta.beta, transformPerspective: 300 }}
       className={styles.hero}
     >
       <Image
@@ -51,6 +75,6 @@ export const Hero = ({}) => {
           />
         </svg>
       </div>
-    </Tilt>
+    </motion.div>
   );
 };
