@@ -36,8 +36,6 @@ export const useGyro = (gyroEnabled = true) => {
       };
     }
 
-    console.log({ beta, dBeta, initialValues });
-
     alpha.set(gyro.alpha);
     beta.set(gyro.beta);
     gamma.set(gyro.gamma);
