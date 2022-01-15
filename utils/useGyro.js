@@ -1,6 +1,6 @@
 import { useMotionValue, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import { sandbox } from ".";
+import { sandbox, unbox } from ".";
 
 export const useGyro = (gyroEnabled = true) => {
   const initialValues = useRef(null);
@@ -11,21 +11,19 @@ export const useGyro = (gyroEnabled = true) => {
 
   const angle = [0, -30];
 
-  const dAlpha = useTransform(
-    alpha,
-    [initialValues.current?.alpha || 0, 180],
-    angle
-  );
-  const dBeta = useTransform(
-    beta,
-    [initialValues.current?.beta || 0, 180],
-    angle
-  );
-  const dGamma = useTransform(
-    gamma,
-    [initialValues.current?.gamma || 0, 180],
-    angle
-  );
+  const useDeltaAngle = (mvValue) => {
+    const [param, value] = unbox(mvValue);
+
+    return useTransform(
+      value,
+      initialValues.current ? [initialValues.current[param], 180] : [0, 180],
+      [0, -30]
+    );
+  };
+
+  const dAlpha = useDeltaAngle({ alpha });
+  const dBeta = useDeltaAngle({ beta });
+  const dGamma = useDeltaAngle({ gamma });
 
   const handleDeviceOrientation = (gyro) => {
     if (!initialValues.current) {
