@@ -16,7 +16,7 @@ export default function Home() {
           url: "https://sonsliv.live/",
           images: [
             {
-              url: "/favicon.ico",
+              url: " https://sonsliv.live/logo.jpeg",
               width: 256,
               height: 256,
               type: "image/jpeg",
