@@ -1,4 +1,4 @@
-import { useMotionValue, useTransform } from "framer-motion";
+import { useMotionValue, useTransform, transform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { sandbox, unbox } from ".";
 
@@ -9,22 +9,6 @@ export const useGyro = (gyroEnabled = true) => {
   const beta = useMotionValue(0);
   const gamma = useMotionValue(0);
 
-  const angle = [0, -30];
-
-  const useDeltaAngle = (mvValue) => {
-    const [param, value] = unbox(mvValue);
-
-    return useTransform(
-      value,
-      initialValues.current ? [initialValues.current[param], 180] : [0, 180],
-      [0, -30]
-    );
-  };
-
-  const dAlpha = useDeltaAngle({ alpha });
-  const dBeta = useDeltaAngle({ beta });
-  const dGamma = useDeltaAngle({ gamma });
-
   const handleDeviceOrientation = (gyro) => {
     if (!initialValues.current) {
       initialValues.current = {
@@ -34,9 +18,16 @@ export const useGyro = (gyroEnabled = true) => {
       };
     }
 
-    alpha.set(gyro.alpha);
-    beta.set(gyro.beta);
-    gamma.set(gyro.gamma);
+    const tr = (param) =>
+      transform(
+        gyro[param],
+        initialValues.current ? [initialValues.current[param], 180] : [0, 180],
+        [0, -30]
+      );
+
+    alpha.set(tr("alpha"));
+    beta.set(tr("beta"));
+    gamma.set(tr("gamma"));
   };
 
   const requestAccessAsync = async () => {
@@ -67,6 +58,7 @@ export const useGyro = (gyroEnabled = true) => {
 
   return {
     gyro: { alpha, beta, gamma },
-    delta: { alpha: dAlpha, beta: dBeta, gamma: dGamma },
+    // delta: { alpha: dAlpha, beta: dBeta, gamma: dGamma },
+    enabled: !!initialValues.current,
   };
 };

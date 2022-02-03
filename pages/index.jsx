@@ -24,13 +24,6 @@ export default function Home() {
           ],
         }}
       />
-      <Head>
-        <title>SON SLIV LIVES HERE</title>
-        <meta
-          name="description"
-          content="THERE IS SOMETHING YOU NEED TO HEAR"
-        ></meta>
-      </Head>
       <Hero />
       <section className="mx-auto mt-14 space-y-5 hover-blur">
         <Button type="spotify" />

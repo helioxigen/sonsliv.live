@@ -6,10 +6,10 @@ import { motion, useMotionValue, useTransform } from "framer-motion";
 import { useGyro } from "../../utils/useGyro";
 
 export const Hero = ({}) => {
-  const { delta } = useGyro();
+  const { gyro, enabled } = useGyro();
 
   const mousePos = useMotionValue(0);
-  const rotateX = useTransform(mousePos, [0, 500], [0, -30]);
+  const rotateX = useTransform(mousePos, [300, 600], [0, -30]);
 
   // const
 
@@ -23,8 +23,6 @@ export const Hero = ({}) => {
 
   // perspective(300px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)
 
-  console.log(delta.beta);
-
   return (
     <motion.div
       // gyroscope
@@ -35,7 +33,10 @@ export const Hero = ({}) => {
       // tiltAngleXInitial={30}
       // perspective={300}
       // style={{  }}
-      style={{ rotateX: delta.beta, transformPerspective: 300 }}
+      style={{
+        rotateX: enabled ? gyro.beta : rotateX,
+        transformPerspective: 300,
+      }}
       className={styles.hero}
     >
       <Image
